@@ -11,6 +11,10 @@
     <artifactId>example-jbehave-app</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+	<failIfNoTests>false</failIfNoTests>
+    </properties>
+
     <dependencies>
         <!-- spring -->
         <dependency>
