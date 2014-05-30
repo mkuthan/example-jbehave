@@ -13,6 +13,7 @@
 
     <properties>
         <failIfNoTests>false</failIfNoTests>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
     <build>
