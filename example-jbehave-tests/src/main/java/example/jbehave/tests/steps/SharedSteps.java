@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SharedSteps {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductDao productRepository;
 
     @Autowired
-    private PriceRepository priceRepository;
+    private PriceDao priceRepository;
 
     @Given("product $name with SKU $sku")
     public void product(String name, StockKeepingUnit sku) {

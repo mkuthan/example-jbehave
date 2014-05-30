@@ -1,6 +1,6 @@
 package example.jbehave.app.domain;
 
-public interface ProductRepository {
+public interface ProductDao {
 
     void save(Product product);
 

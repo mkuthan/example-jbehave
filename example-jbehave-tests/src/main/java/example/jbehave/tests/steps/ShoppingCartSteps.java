@@ -12,36 +12,34 @@ import static org.junit.Assert.assertEquals;
 public class ShoppingCartSteps {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ShoppingCartService shoppingCartService;
 
     @Autowired
-    private PriceRepository priceRepository;
-
-    private ShoppingCart shoppingCart;
+    private ProductDao productRepository;
 
     @Given("empty shopping cart")
     public void emptyShoppingCart() {
-        shoppingCart = new ShoppingCart();
+        shoppingCartService.createEmptyShoppingCart();
     }
 
     @When("products are added to the shopping cart: $productNames")
     public void addProducts(List<ShoppingCartRow> rows) {
         for (ShoppingCartRow row : rows) {
             Product product = productRepository.findByName(row.getProductName());
-            Money price = priceRepository.findBySku(product.getSku());
-
-            shoppingCart.addItem(new ShoppingCartItem(product.getSku(), row.getQuantity(), price));
+            shoppingCartService.addProductToShoppingCart(product.getSku(), row.getQuantity());
         }
     }
 
     @Then("shopping cart is empty")
     public void isEmpty() {
-        assertEquals(shoppingCart.numberOfItems(), 0);
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingCart();
+        assertEquals(0, shoppingCart.numberOfItems());
     }
 
     @Then("the number of products in shopping cart is $numberOfItems")
     public void numberOfItems(int numberOfItems) {
-        assertEquals(shoppingCart.numberOfItems(), numberOfItems);
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingCart();
+        assertEquals(numberOfItems, shoppingCart.numberOfItems());
     }
 
     @Then("total price is $price")

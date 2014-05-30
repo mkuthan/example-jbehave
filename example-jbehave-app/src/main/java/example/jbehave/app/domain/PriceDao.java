@@ -1,6 +1,6 @@
 package example.jbehave.app.domain;
 
-public interface PriceRepository {
+public interface PriceDao {
 
     void save(StockKeepingUnit sku, Money price);
 

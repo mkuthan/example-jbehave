@@ -1,14 +1,14 @@
 package example.jbehave.app.infrastructure;
 
 import example.jbehave.app.domain.Product;
-import example.jbehave.app.domain.ProductRepository;
+import example.jbehave.app.domain.ProductDao;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class InMemoryProductRepository implements ProductRepository {
+public class InMemoryProductDao implements ProductDao {
 
     private Map<String, Product> products = new HashMap<>();
 

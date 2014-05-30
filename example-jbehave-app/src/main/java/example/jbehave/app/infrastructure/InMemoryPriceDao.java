@@ -1,7 +1,7 @@
 package example.jbehave.app.infrastructure;
 
 import example.jbehave.app.domain.Money;
-import example.jbehave.app.domain.PriceRepository;
+import example.jbehave.app.domain.PriceDao;
 import example.jbehave.app.domain.StockKeepingUnit;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class InMemoryPriceRepository implements PriceRepository {
+public class InMemoryPriceDao implements PriceDao {
 
     private Map<StockKeepingUnit, Money> prices = new HashMap<>();
 
